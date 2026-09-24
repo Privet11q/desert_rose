@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 36 44% 96%;
+        --foreground: 340 28% 13%;
+        --card: 0 0% 100%;
+        --card-foreground: 340 28% 13%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 340 28% 13%;
+        --primary: 344 78% 23%;
+        --primary-foreground: 40 60% 97%;
+        --secondary: 350 40% 92%;
+        --secondary-foreground: 340 28% 13%;
+        --muted: 30 30% 93%;
+        --muted-foreground: 335 12% 43%;
+        --accent: 46 65% 52%;
+        --accent-foreground: 340 30% 10%;
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 350 25% 88%;
+        --input: 350 25% 82%;
+        --ring: 46 65% 52%;
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+    body {
+        @apply bg-cream font-sans text-flame-ink antialiased;
+    }
+    ::selection {
+        background: #d4af37;
+        color: #12060a;
+    }
+}
+
+@layer components {
+    .btn-gold {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-flame-velvetDeep transition-[background-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:bg-gold-light hover:shadow-[0_12px_40px_-10px_rgba(212,175,55,0.55)];
+    }
+    .btn-outline-light {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border border-cream/40 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-cream transition-[border-color,color,transform] duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold;
+    }
+    .btn-crimson {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-flame-crimson px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-cream transition-[background-color,box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:bg-flame-crimsonHover hover:shadow-[0_12px_40px_-10px_rgba(106,13,37,0.5)];
+    }
+    .btn-outline-crimson {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border border-flame-crimson/40 px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-flame-crimson transition-[background-color,color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-flame-crimson hover:bg-flame-crimson hover:text-cream;
+    }
+    .eyebrow {
+        @apply text-xs font-semibold uppercase tracking-[0.3em] text-gold;
+    }
+}
+
+.clip-arch {
+    border-radius: 999px 999px 28px 28px;
+}
+
+.text-gold-gradient {
+    background: linear-gradient(105deg, #f3e5ab 0%, #d4af37 45%, #b8860b 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.55;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-marquee {
+    animation: marquee 42s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
+
+@keyframes float-slow {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+.animate-float-slow {
+    animation: float-slow 7s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-marquee,
+    .animate-float-slow {
+        animation: none;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
